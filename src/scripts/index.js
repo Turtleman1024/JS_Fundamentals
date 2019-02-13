@@ -15,6 +15,8 @@ let paraEleven = document.getElementById('para-eleven');
 let paraTwelve = document.getElementById('para-twelve');
 let paraThirteen = document.getElementById('para-thirteen');
 let paraFourteen = document.getElementById('para-fourteen');
+let paraFifteen = document.getElementById('para-fifteen');
+let paraSixteen = document.getElementById('para-sixteen');
 //#endregion
 
 //#region Rest_Paramters
@@ -141,4 +143,14 @@ let getId4 = (prefix, suffix) => {
     return prefix + 123 + suffix;
 };
 updateTag(paraFourteen, getId4('Car ID: ', '!'));
+//#endregion
+
+
+//#region Default Parameters
+let trackCar = function(element, carId, city='NY'){
+    updateTag(element, `Tracking ${carId} in ${city}.`);
+};
+
+trackCar(paraFifteen, 62);
+trackCar(paraSixteen, 64,'Chicago');
 //#endregion
