@@ -19,7 +19,7 @@ let paraFourteen = document.getElementById('para-fourteen');
 
 //#region Rest_Paramters
 //Rest Paramaters Example
-function sendCars(element, ...carInfo)
+function updateTag(element, ...carInfo)
 {
     carInfo.forEach(id => 
             element.innerHTML +=  " " + id
@@ -27,7 +27,7 @@ function sendCars(element, ...carInfo)
 }
 //#endregion
 
-sendCars(paraOne,'GMC', 100, 200, 555);
+updateTag(paraOne,'GMC', 100, 200, 555);
 
 //#region Destructing_Arrays 
 //Destructing Arrays
@@ -36,7 +36,7 @@ let car1, remainingCars;
 //This is just a way to assign values to multiple variables
 [car1, ...remainingCars] = carIds;
 
-sendCars(paraTwo, car1, remainingCars);
+updateTag(paraTwo, car1, remainingCars);
 
 let carVins = [1, 2, 3];
 let car, car2, remainingCars1;
@@ -44,7 +44,7 @@ let car, car2, remainingCars1;
 //Will skip the first vin #
 [, car2, ...remainingCars1] = carVins;
 
-sendCars(paraThree, car2, remainingCars1);
+updateTag(paraThree, car2, remainingCars1);
 //#endregion
 
 //#region Destructing_Objects
@@ -59,7 +59,7 @@ paraFour.innerText = id + " " + style;
 //Immediately Invoked Function Expression
 let app = (function(){
     let id = 123;
-    sendCars(paraFive, id);
+    updateTag(paraFive, id);
     return{};
 })();
 //#endregion
@@ -74,7 +74,7 @@ let app1 = (function(){
         getId: getId
     };
 })();
-sendCars(paraSix, app1.getId());
+updateTag(paraSix, app1.getId());
 //#endregion
 
 //#region this keyword
@@ -84,7 +84,7 @@ let app2 = {
         return this.carId;
     }
 };
-sendCars(paraSeven, app2.getId());
+updateTag(paraSeven, app2.getId());
 //#endregion
 
 //#region Call and Apply
@@ -97,7 +97,7 @@ let app3 = {
 };
 
 let newCar = {carId: 987};
-sendCars(paraEight, app3.getId.call(newCar)); //987
+updateTag(paraEight, app3.getId.call(newCar)); //987
 
 //Apply
 let app4 = {
@@ -108,7 +108,7 @@ let app4 = {
 };
 
 let newCar1 = {carId: 678};
-sendCars(paraNine, app4.getId.apply(newCar1, ['ID: '])); // ID: 678
+updateTag(paraNine, app4.getId.apply(newCar1, ['ID: '])); // ID: 678
 //#endregion
 
 //#region Bind
@@ -122,23 +122,23 @@ let app5 = {
 let newCar2 = {carId: 456};
 //Make a copy of the getId function
 let newFn = app5.getId.bind(newCar2);
-sendCars(paraTen, newFn());
+updateTag(paraTen, newFn());
 //#endregion 
 
 //#region Arrow Functions
 //No parameters
 let getId = () => 123;
-sendCars(paraEleven, getId());
+updateTag(paraEleven, getId());
 //One parameter
 let getId2 = prefix => prefix + 123;
-sendCars(paraTwelve, getId2('ID: ')); //ID: 123
+updateTag(paraTwelve, getId2('ID: ')); //ID: 123
 //Multiple parameters
 let getId3 = (prefix, suffix) => prefix + 123 + suffix;
-sendCars(paraThirteen, getId3('ID: ', '!'));
+updateTag(paraThirteen, getId3('ID: ', '!'));
 //Can specify more by using {}
 let getId4 = (prefix, suffix) => {
     //Will need a return value
     return prefix + 123 + suffix;
 };
-sendCars(paraFourteen, getId4('Car ID: ', '!'));
+updateTag(paraFourteen, getId4('Car ID: ', '!'));
 //#endregion
