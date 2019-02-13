@@ -11,6 +11,10 @@ let paraSeven = document.getElementById('para-seven');
 let paraEight = document.getElementById('para-eight');
 let paraNine = document.getElementById('para-nine');
 let paraTen = document.getElementById('para-ten');
+let paraEleven = document.getElementById('para-eleven');
+let paraTwelve = document.getElementById('para-twelve');
+let paraThirteen = document.getElementById('para-thirteen');
+let paraFourteen = document.getElementById('para-fourteen');
 //#endregion
 
 //#region Rest_Paramters
@@ -120,3 +124,21 @@ let newCar2 = {carId: 456};
 let newFn = app5.getId.bind(newCar2);
 sendCars(paraTen, newFn());
 //#endregion 
+
+//#region Arrow Functions
+//No parameters
+let getId = () => 123;
+sendCars(paraEleven, getId());
+//One parameter
+let getId2 = prefix => prefix + 123;
+sendCars(paraTwelve, getId2('ID: ')); //ID: 123
+//Multiple parameters
+let getId3 = (prefix, suffix) => prefix + 123 + suffix;
+sendCars(paraThirteen, getId3('ID: ', '!'));
+//Can specify more by using {}
+let getId4 = (prefix, suffix) => {
+    //Will need a return value
+    return prefix + 123 + suffix;
+};
+sendCars(paraFourteen, getId4('Car ID: ', '!'));
+//#endregion
