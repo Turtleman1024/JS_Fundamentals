@@ -7,6 +7,7 @@ let paraThree = document.getElementById('para-three');
 let paraFour = document.getElementById('para-four');
 let paraFive = document.getElementById('para-five');
 let paraSix = document.getElementById('para-six');
+let paraSeven = document.getElementById('para-seven');
 //#endregion
 
 //#region Rest_Paramters
@@ -69,7 +70,16 @@ let app1 = (function(){
 sendCars(paraSix, app1.getId());
 //#endregion
 
-
 //#region this keyword
+let app2 = {
+    carId: 456,
+    getId: function() {
+        return this.carId;
+    }
+};
+sendCars(paraSeven, app2.getId());
+//#endregion
+
+//#region Call and Apply
 
 //#endregion
