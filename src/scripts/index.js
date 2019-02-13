@@ -8,6 +8,8 @@ let paraFour = document.getElementById('para-four');
 let paraFive = document.getElementById('para-five');
 let paraSix = document.getElementById('para-six');
 let paraSeven = document.getElementById('para-seven');
+let paraEight = document.getElementById('para-eight');
+let paraNine = document.getElementById('para-nine');
 //#endregion
 
 //#region Rest_Paramters
@@ -81,5 +83,25 @@ sendCars(paraSeven, app2.getId());
 //#endregion
 
 //#region Call and Apply
+//Call
+let app3 = {
+    carId: 123,
+    getId: function(){
+        return this.carId;
+    }
+};
 
+let newCar = {carId: 987};
+sendCars(paraEight, app3.getId.call(newCar)); //987
+
+//Apply
+let app4 = {
+    carId: 123,
+    getId: function(prefix){
+        return prefix + this.carId;
+    }
+};
+
+let newCar1 = {carId: 678};
+sendCars(paraNine, app4.getId.apply(newCar1, ['ID: '])); // ID: 678
 //#endregion
