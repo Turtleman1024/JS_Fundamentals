@@ -10,6 +10,7 @@ let paraSix = document.getElementById('para-six');
 let paraSeven = document.getElementById('para-seven');
 let paraEight = document.getElementById('para-eight');
 let paraNine = document.getElementById('para-nine');
+let paraTen = document.getElementById('para-ten');
 //#endregion
 
 //#region Rest_Paramters
@@ -105,3 +106,17 @@ let app4 = {
 let newCar1 = {carId: 678};
 sendCars(paraNine, app4.getId.apply(newCar1, ['ID: '])); // ID: 678
 //#endregion
+
+//#region Bind
+let app5 = {
+    carId: 123,
+    getId: function(){
+        return this.carId;
+    }
+};
+
+let newCar2 = {carId: 456};
+//Make a copy of the getId function
+let newFn = app5.getId.bind(newCar2);
+sendCars(paraTen, newFn());
+//#endregion 
