@@ -17,6 +17,13 @@ let paraThirteen = document.getElementById('para-thirteen');
 let paraFourteen = document.getElementById('para-fourteen');
 let paraFifteen = document.getElementById('para-fifteen');
 let paraSixteen = document.getElementById('para-sixteen');
+let paraSeventeen = document.getElementById('para-seventeen');
+let paraEighteen = document.getElementById('para-eighteen');
+let paraNineteen = document.getElementById('para-nineteen');
+let paraTwenty = document.getElementById('para-twenty');
+let paraTwentyOne = document.getElementById('para-twentyone');
+let paraTwentyTwo = document.getElementById('para-twentytwo');
+let paraTwentyThree = document.getElementById('para-twentythree');
 //#endregion
 
 //#region Rest_Paramters
@@ -145,7 +152,6 @@ let getId4 = (prefix, suffix) => {
 updateTag(paraFourteen, getId4('Car ID: ', '!'));
 //#endregion
 
-
 //#region Default Parameters
 let trackCar = function(element, carId, city='NY'){
     updateTag(element, `Tracking ${carId} in ${city}.`);
@@ -154,3 +160,66 @@ let trackCar = function(element, carId, city='NY'){
 trackCar(paraFifteen, 62);
 trackCar(paraSixteen, 64,'Chicago');
 //#endregion
+
+//#region Objects and Arrays
+//Constructor Functions Without Prototypes
+function SportCar(id){
+    this.carId = id;
+    this.start = function(){
+        updateTag(paraEighteen, `Start Car: ${this.carId}`);
+    };
+}
+
+let sportCar = new SportCar(999);
+updateTag(paraSeventeen, sportCar.carId);
+sportCar.start();
+
+//Using a prototype 
+function SUVCar(id){
+    this.carId = id;
+}
+
+SUVCar.prototype.start= function(){
+    updateTag(paraNineteen, `Start Car: ${this.carId}`);
+};
+
+let suvCar = new SUVCar(888);
+suvCar.start();
+
+//Expanding Objects Using Prototypes
+String.prototype.hello = function(){
+    return this.toString() + ' Hello';
+};
+
+updateTag(paraTwenty, 'Turtleman'.hello());
+
+//JSON - JavaScript Object Notation Convert to JSON
+//JavaScript literal example
+let thisCar = {
+    id: 123,
+    style: 'convertible'
+};
+
+updateTag(paraTwentyOne, JSON.stringify(thisCar));
+
+let moreCarIds = [
+    {carId: 123},
+    {carId: 456},
+    {carId: 789}
+];
+
+updateTag(paraTwentyTwo, JSON.stringify(moreCarIds));
+
+//Parsing JSON
+let jsonIn =
+`
+    [
+        {"carId" : 987},
+        {"carId" : 654},
+        {"carId" : 321}
+    ]
+`;
+let evenMoreCarIds = JSON.parse(jsonIn);
+updateTag(paraTwentyThree, JSON.stringify(evenMoreCarIds));
+//#endregion
+
