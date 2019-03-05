@@ -24,9 +24,10 @@ let paraTwenty = document.getElementById('para-twenty');
 let paraTwentyOne = document.getElementById('para-twentyone');
 let paraTwentyTwo = document.getElementById('para-twentytwo');
 let paraTwentyThree = document.getElementById('para-twentythree');
+let paraTwentyFour = document.getElementById('para-twentyfour');
 //#endregion
 
-//#region Rest_Paramters
+//#region Rest_Parameters
 //Rest Paramaters Example
 function updateTag(element, ...carInfo)
 {
@@ -221,5 +222,31 @@ let jsonIn =
 `;
 let evenMoreCarIds = JSON.parse(jsonIn);
 updateTag(paraTwentyThree, JSON.stringify(evenMoreCarIds));
+
+//Array Iteration
+let oddCarIds = [
+    {carID: 13, style: 'sedan'},
+    {carID: 57, style: 'convertible'},
+    {carID: 9,  style: 'sedan'}
+];
+oddCarIds.forEach(car => console.log(car));
+
+//Array Filtering
+let convertibles = oddCarIds.filter(
+    car => car.style === 'convertible'
+);
+console.log(convertibles);
+
+//Array Testing
+let result = oddCarIds.every(
+    car => car.carID > 0
+);
+console.log(result);
+
+//Array Find
+let someCar = oddCarIds.find(
+    car => car.carID > 50
+);
+console.log(someCar);
 //#endregion
 
